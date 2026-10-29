@@ -1,0 +1,354 @@
+<!doctype html>
+<html lang="de">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#111b35">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Tagwerk">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="apple-touch-icon" href="./apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="./icon-192.png">
+  <title>Tagwerk 1.3 – iPhone-Kalender</title>
+  <style>
+    :root{--bg:#f5f7fc;--paper:#fff;--ink:#17213b;--muted:#72809a;--line:#e6eaf3;--nav:#15213b;--nav-dim:#92a0b9;--blue:#5266e9;--blue-bg:#e9edff;--teal:#009e92;--teal-bg:#ddf8f2;--amber:#b57919;--amber-bg:#fff2d7;--rose:#ce5770;--rose-bg:#ffeaf0;--slate:#79849a;--slate-bg:#edf0f5;--violet:#7854bc;--violet-bg:#f1eaff;--holiday:#be6d24;--holiday-bg:#fff1df;--shadow:0 8px 34px rgba(25,40,73,.045);--radius:17px}
+    *{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.45 system-ui,-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif}button,input,textarea,select{font:inherit}button{cursor:pointer}button:disabled{opacity:.45;cursor:not-allowed}button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid #a8b3ff;outline-offset:2px}button{transition:background-color .15s,transform .15s}button:active{transform:translateY(1px)}.app{display:grid;grid-template-columns:236px minmax(0,1fr);min-height:100vh}.sidebar{background:var(--nav);color:#fff;padding:32px 19px;display:flex;flex-direction:column;gap:29px}.brand{display:flex;align-items:center;gap:11px;padding:0 9px}.brand-logo{width:39px;height:39px;display:grid;place-items:center;background:linear-gradient(140deg,#8694ff,#5266e9);border-radius:13px;box-shadow:0 8px 15px #111a3580}.brand-title{font-size:19px;font-weight:790;letter-spacing:-.7px}.brand-sub{font-size:11px;color:var(--nav-dim);letter-spacing:.2px}.section-label{text-transform:uppercase;letter-spacing:1.7px;font-size:10px;color:#8393b1;font-weight:800;padding:0 13px;margin-bottom:10px}.nav-list{display:grid;gap:6px}.nav-button{display:flex;align-items:center;gap:12px;padding:12px 13px;background:none;color:#b5c0d4;border:0;width:100%;text-align:left;border-radius:11px;font-weight:650}.nav-button.active,.nav-button:hover{background:#283656;color:#fff}.nav-button svg,.tool-btn svg,.icon-btn svg{width:17px;height:17px;fill:none;stroke:currentColor;stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.nav-button.active svg{color:#aab5ff}.side-summary{padding:17px 15px;background:#22324f;border:1px solid #344563;border-radius:15px}.side-summary .small{color:#aebbd1;font-size:11px}.side-summary .large{font-size:30px;font-weight:820;letter-spacing:-1px;margin:5px 0 2px}.side-summary .smallline{font-size:12px;color:#c2ccdd}.side-track{height:7px;background:#3a4b69;border-radius:10px;overflow:hidden;margin-top:14px}.side-fill{height:100%;background:linear-gradient(90deg,#8291ff,#b0bbff);border-radius:10px;width:0}.sidebar-bottom{margin-top:auto;display:grid;gap:15px}.sidebar-info{padding:0 10px;font-size:12px;color:#a9b5ca;line-height:1.65}.sidebar-note{font-size:11px;color:#7889a8;padding:0 10px}.main{min-width:0;padding:30px max(24px,calc((100vw - 1550px)/2));}.topbar{display:flex;align-items:flex-start;justify-content:space-between;gap:15px;margin-bottom:25px}.eyebrow{font-size:11px;text-transform:uppercase;color:var(--blue);letter-spacing:1.8px;font-weight:850}.page-title{font-size:30px;letter-spacing:-1.2px;line-height:1.2;margin:5px 0 4px;font-weight:830}.page-subtitle{color:var(--muted);font-size:13px}.top-actions{display:flex;align-items:center;gap:9px;flex-wrap:wrap}.primary,.secondary,.subtle,.icon-btn,.tool-btn{border-radius:10px;display:inline-flex;align-items:center;justify-content:center;gap:8px;font-weight:700}.primary{background:var(--blue);color:#fff;border:1px solid var(--blue);padding:11px 15px;box-shadow:0 6px 12px #5266e929}.primary:hover{background:#4055da}.secondary{background:#fff;border:1px solid var(--line);color:var(--ink);padding:10px 13px}.secondary:hover,.icon-btn:hover,.tool-btn:hover{background:#f3f5ff}.subtle{border:0;color:var(--blue);background:transparent;padding:7px 0}.icon-btn{background:white;border:1px solid var(--line);width:38px;height:38px;color:#5b6780}.tool-btn{padding:9px 12px;border:1px solid var(--line);background:#fff;color:#4a5773;font-size:12px}.main-grid{display:grid;grid-template-columns:minmax(0,1fr) 292px;align-items:start;gap:19px}.left-stack,.right-stack{min-width:0;display:grid;gap:19px}.surface{background:var(--paper);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);overflow:hidden}.surface-pad{padding:20px}.calendar-toolbar{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:19px 21px;border-bottom:1px solid var(--line);flex-wrap:wrap}.month-title{font-size:19px;font-weight:780;letter-spacing:-.5px;margin:0}.month-subtitle{font-size:12px;color:var(--muted);margin-top:2px}.month-controls{display:flex;gap:6px;align-items:center}.today-btn{font-size:12px;margin-right:4px;padding:8px 10px}.weekdays,.calendar-grid{display:grid;grid-template-columns:repeat(7,minmax(0,1fr))}.weekdays{padding:10px 9px;background:#fbfcff;border-bottom:1px solid var(--line)}.weekdays div{color:#8a96ab;font-size:11px;text-align:center;font-weight:800}.calendar-grid{padding:9px;gap:6px}.calendar-day{height:105px;min-width:0;border:1px solid transparent;border-radius:10px;background:#fff;text-align:left;padding:8px 7px;display:flex;flex-direction:column;align-items:stretch;gap:5px;color:var(--ink);position:relative;overflow:hidden}.calendar-day:not(.outside):hover{background:#f5f7ff;border-color:#e5e9fb}.calendar-day.outside{background:#f9fafc;color:#adb6c6}.calendar-day.weekend:not(.outside){background:#fafbfe}.calendar-day.selected{border-color:#7584f7!important;background:#f2f4ff!important;box-shadow:0 0 0 1px #7584f7 inset}.calendar-day.today .day-number{background:var(--ink);color:white;border-radius:8px}.calendar-day.outside .day-number{opacity:.64}.day-head{display:flex;align-items:center;justify-content:space-between}.day-number{display:inline-grid;place-items:center;min-width:24px;height:24px;font-size:12px;font-weight:800}.day-event-number{font-size:10px;background:#eef1fa;border-radius:100px;color:#7b88a2;padding:1px 6px}.location-chip{display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;border-radius:5px;padding:3px 5px;font-size:10px;font-weight:750;line-height:1.2}.location-chip.office{color:var(--blue);background:var(--blue-bg)}.location-chip.home{color:var(--teal);background:var(--teal-bg)}.location-chip.vacation{color:var(--amber);background:var(--amber-bg)}.location-chip.sick{color:var(--rose);background:var(--rose-bg)}.location-chip.off{color:var(--slate);background:var(--slate-bg)}.location-chip.internship{color:var(--violet);background:var(--violet-bg)}.location-chip.holiday{color:var(--holiday);background:var(--holiday-bg)}.calendar-day.outside .location-chip{opacity:.4}.event-pill{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;font-size:10px;font-weight:620;color:#536079;border-left:2px solid var(--blue);padding-left:5px;line-height:1.3}.event-pill.personal{border-color:#d38c55}.event-pill.other{border-color:#a27ac5}.tiny-more{font-size:9px;color:#7e8ba2}.calendar-footer{border-top:1px solid var(--line);padding:12px 20px;display:flex;gap:15px;align-items:center;flex-wrap:wrap}.legend{display:inline-flex;align-items:center;gap:6px;color:#6b7892;font-size:11px;font-weight:650}.legend-dot{width:8px;height:8px;border-radius:3px;display:inline-block}.section-title{font-size:17px;font-weight:780;letter-spacing:-.45px;margin:0}.section-desc{font-size:12px;color:var(--muted);margin-top:3px}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}.segmented{border:1px solid var(--line);background:#f8f9fd;border-radius:10px;padding:3px;display:flex;gap:2px}.segmented button{border:0;background:transparent;padding:6px 11px;border-radius:7px;font-size:11px;color:#7c879b;font-weight:750}.segmented button.active{background:#fff;color:var(--ink);box-shadow:0 2px 9px #15213b13}.stats-layout{display:grid;grid-template-columns:175px minmax(0,1fr);gap:24px;margin-top:23px;align-items:center}.donut{width:163px;aspect-ratio:1;border-radius:50%;background:conic-gradient(var(--blue) 0 50%,var(--teal) 50% 100%);display:grid;place-items:center;margin:auto}.donut-inner{width:118px;aspect-ratio:1;display:grid;place-items:center;align-content:center;border-radius:50%;background:#fff}.donut-val{font-size:33px;line-height:1;font-weight:850;letter-spacing:-1.1px}.donut-sub{color:var(--muted);font-size:11px;margin-top:6px;font-weight:650}.stat-row{display:flex;align-items:center;justify-content:space-between;gap:10px;padding:9px 0}.stat-left{display:flex;align-items:center;gap:9px;font-weight:730}.stat-name{font-size:12px}.stat-right{display:flex;align-items:baseline;gap:9px}.stat-count{font-weight:850;font-size:20px;letter-spacing:-.5px}.stat-percent{font-size:12px;font-weight:760;min-width:66px;text-align:right;white-space:nowrap}.stat-meter{background:#edf0f6;border-radius:10px;height:8px;overflow:hidden;margin:3px 0 11px}.stat-meter>span{height:100%;display:block;border-radius:10px;width:0;transition:width .25s}.mini-text{font-size:11px;color:var(--muted)}.extra-stats{display:flex;gap:10px;margin-top:16px;flex-wrap:wrap;border-top:1px solid var(--line);padding-top:14px}.extra-stats span{padding:6px 10px;background:#f6f8fc;border-radius:8px;color:#65738b;font-size:11px}.extra-stats strong{color:var(--ink)}.day-date-label{font-size:11px;color:var(--blue);letter-spacing:1px;text-transform:uppercase;font-weight:850}.day-title{font-size:21px;font-weight:800;letter-spacing:-.6px;margin:4px 0 2px}.day-sub{font-size:12px;color:var(--muted)}.side-divider{height:1px;background:var(--line);margin:20px 0}.small-heading{font-size:12px;font-weight:830;margin:0 0 10px}.status-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}.status-btn{border:1px solid var(--line);background:#fff;border-radius:9px;min-height:43px;text-align:left;display:flex;gap:7px;align-items:center;padding:9px;font-size:11px;color:#5c6982;font-weight:710}.status-btn:hover{background:#f8faff}.status-btn.active.office{border-color:#96a2fb;background:var(--blue-bg);color:var(--blue)}.status-btn.active.home{border-color:#85dace;background:var(--teal-bg);color:var(--teal)}.status-btn.active.vacation{border-color:#f5c985;background:var(--amber-bg);color:var(--amber)}.status-btn.active.sick{border-color:#f2b7c6;background:var(--rose-bg);color:var(--rose)}.status-btn.active.off{border-color:#c4cbd5;background:var(--slate-bg);color:var(--slate)}.status-btn.active.internship{border-color:#c4a8f0;background:var(--violet-bg);color:var(--violet)}.status-btn.active.holiday{border-color:#efc596;background:var(--holiday-bg);color:var(--holiday)}.status-emoji{font-size:17px}.status-foot{display:flex;justify-content:space-between;align-items:center;margin-top:9px;gap:8px}.hint{font-size:10px;color:var(--muted)}.tiny-link{background:none;border:0;padding:4px 0;font-size:11px;color:#6474da;font-weight:720}.note-area{display:block;width:100%;min-height:83px;resize:vertical;border:1px solid var(--line);background:#fbfcff;border-radius:10px;padding:11px;color:var(--ink);font-size:12px;line-height:1.5}.note-area::placeholder{color:#9ba6b8}.note-status{font-size:10px;color:var(--teal);height:14px;margin-top:5px;visibility:hidden}.note-status.visible{visibility:visible}.day-events{display:grid;gap:9px;margin:10px 0}.event-card{border:1px solid var(--line);border-radius:10px;padding:9px 10px;display:flex;gap:10px;align-items:flex-start}.event-dot{height:9px;width:9px;border-radius:50%;margin-top:5px;background:var(--blue);flex-shrink:0}.event-dot.personal{background:#d38c55}.event-dot.other{background:#a27ac5}.event-main{min-width:0;flex:1}.event-title{font-size:12px;font-weight:790;word-break:break-word}.event-meta{font-size:10px;color:#7b89a1;margin-top:3px}.event-edit{border:0;background:#f3f5fa;color:#6c7891;border-radius:7px;font-weight:700;font-size:10px;padding:6px}.empty-events{color:#9aa5b8;font-size:12px;background:#fbfcff;border:1px dashed #dce2ef;border-radius:10px;padding:16px;text-align:center}.new-event{width:100%;margin-top:8px}.upcoming-list{display:grid;gap:13px;margin-top:15px}.upcoming-item{display:flex;gap:10px;align-items:center;cursor:pointer;padding:5px;border-radius:8px}.upcoming-item:hover{background:#f6f8ff}.upcoming-date{min-width:41px;text-align:center;background:#f4f6fc;border-radius:9px;padding:5px 0}.upcoming-date strong{display:block;font-size:15px}.upcoming-date span{font-size:9px;text-transform:uppercase;font-weight:760;color:var(--muted)}.upcoming-text{min-width:0}.upcoming-text strong{display:block;font-size:12px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.upcoming-text small{font-size:10px;color:var(--muted)}.empty-upcoming{color:var(--muted);font-size:12px}.privacy-note{display:flex;gap:8px;align-items:flex-start;font-size:11px;color:#7a879b;padding:3px 4px}.privacy-note svg{width:15px;height:15px;flex-shrink:0;margin-top:1px}.muted{color:var(--muted)}.modal{max-width:min(490px,calc(100vw - 28px));width:100%;border:1px solid var(--line);border-radius:18px;box-shadow:0 30px 90px #17213b35;padding:0;color:var(--ink)}.modal::backdrop{background:rgba(18,28,49,.55);backdrop-filter:blur(3px)}.modal-content{padding:26px}.modal-header{display:flex;align-items:start;justify-content:space-between;margin-bottom:18px;gap:12px}.modal-title{font-size:22px;font-weight:810;letter-spacing:-.7px;margin:0}.modal-explain{font-size:12px;color:var(--muted);margin:5px 0 0}.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}.field{display:grid;gap:5px;margin-bottom:13px}.field.wide{grid-column:1/-1}.field label{font-size:11px;font-weight:790;color:#526078}.field input,.field select,.field textarea{width:100%;border:1px solid #dbe1ed;border-radius:9px;padding:10px 11px;color:var(--ink);background:#fff;min-height:40px}.field textarea{resize:vertical;min-height:92px}.modal-actions{display:flex;justify-content:flex-end;gap:9px;margin-top:14px;flex-wrap:wrap}.danger{color:#c34b67!important}.week-plan{display:grid;gap:7px}.week-row{display:grid;grid-template-columns:1fr 1.25fr;align-items:center;gap:13px}.week-row label{font-weight:740;font-size:12px}.week-row select{border:1px solid #dbe1ed;padding:9px;background:white;border-radius:9px;color:var(--ink)}.check-row{display:flex;gap:9px;align-items:start;font-size:12px;color:#53617a;margin-top:13px}.check-row input{accent-color:var(--blue);margin-top:2px}.target-wrap{display:flex;align-items:center;gap:15px;margin:15px 0}.target-wrap input{width:92px;border:1px solid var(--line);border-radius:9px;padding:10px;font-weight:750}.settings-export{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.settings-export button{font-size:12px}.settings-desc{font-size:11px;color:var(--muted);line-height:1.55}.settings-heading{font-size:13px;font-weight:800;margin:19px 0 6px}.toast{position:fixed;bottom:22px;left:50%;transform:translate(-50%,16px);background:#17213b;color:#fff;padding:11px 17px;border-radius:12px;font-weight:680;box-shadow:0 12px 30px #17213b30;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;z-index:100}.toast.show{transform:translate(-50%,0);opacity:1}@media(max-width:1280px){.app{grid-template-columns:202px minmax(0,1fr)}.main{padding:26px 22px}.main-grid{grid-template-columns:minmax(0,1fr) 270px;gap:13px}.left-stack,.right-stack{gap:13px}.stats-layout{grid-template-columns:145px minmax(0,1fr);gap:14px}.donut{width:137px}.donut-inner{width:97px}.donut-val{font-size:27px}.calendar-day{height:100px;padding:6px}}@media(max-width:1060px){.app{grid-template-columns:1fr}.sidebar{padding:13px 22px;flex-direction:row;justify-content:space-between;align-items:center}.brand{padding:0}.sidebar .section-label,.sidebar .nav-list,.sidebar-bottom,.side-summary{display:none}.main-grid{grid-template-columns:minmax(0,1fr) 280px}}@media(max-width:760px){.main{padding:19px 13px}.topbar{align-items:start;flex-wrap:wrap;margin-bottom:16px}.page-title{font-size:25px}.main-grid{grid-template-columns:1fr}.right-stack{grid-template-columns:1fr}.calendar-day{height:89px;padding:5px 3px;gap:4px}.calendar-grid{gap:2px;padding:5px}.calendar-toolbar{padding:15px 13px}.location-chip{font-size:9px;padding:3px 3px}.event-pill{font-size:9px}.weekdays{padding:10px 5px}.stats-layout{grid-template-columns:145px minmax(0,1fr)}.sidebar{padding:12px 14px}.top-actions .secondary span{display:none}.section-heading{align-items:flex-start}.surface-pad{padding:17px}}@media(max-width:410px){.month-title{font-size:17px}.calendar-day{height:76px}.calendar-day .event-pill{display:none}.calendar-day .tiny-more{display:none}.day-number{min-width:20px;height:20px;font-size:11px}.calendar-footer{padding:12px;gap:9px}.legend{font-size:10px}.stats-layout{grid-template-columns:1fr;gap:7px}.stats-layout .donut{margin-bottom:10px}.status-grid{gap:8px}.top-actions{width:100%}.primary{flex:1}.page-title{font-size:24px}}@media print{.sidebar,.top-actions,.month-controls,.right-stack,.calendar-footer,.new-event,.toast,.segmented{display:none!important}.app{display:block}.main{padding:0}.main-grid{display:block}.surface{box-shadow:none;border:1px solid #bbb;margin-bottom:12px}.calendar-day{height:90px;break-inside:avoid}.calendar-grid{gap:2px}.left-stack{display:block}.left-stack>.surface{margin-bottom:12px}body{background:white}}
+    .practice-intro{margin:12px 0 18px;font-size:12px;line-height:1.65;color:var(--muted)}
+    .practice-metrics{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:9px;margin:14px 0 20px}
+    .practice-metric{border:1px solid #e9e1fa;background:#faf8ff;padding:11px;border-radius:11px}
+    .practice-metric strong{display:block;color:var(--violet);font-size:25px;line-height:1.1}
+    .practice-metric span{font-size:11px;color:#6d6680;line-height:1.5}
+    .practice-heading{font-size:12px;font-weight:800;margin-bottom:9px}
+    .practice-item{width:100%;border:1px solid var(--line);background:#fff;display:flex;gap:12px;align-items:center;text-align:left;padding:10px;border-radius:10px;margin-bottom:7px;color:var(--ink)}
+    .practice-item:hover{background:#faf8ff;border-color:#d8c3f6}
+    .practice-item-date{flex:0 0 auto;font-size:12px;font-weight:750}
+    .practice-item-meta{font-size:11px;color:var(--muted);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+    .practice-empty{font-size:12px;color:var(--muted);background:#f9f8fc;padding:15px;border-radius:10px}
+    @media(max-width:550px){.practice-metrics{grid-template-columns:repeat(2,minmax(0,1fr))}.practice-item{display:block}.practice-item-meta{margin-top:4px}}
+
+    .mobile-bottom-nav{display:none}
+    @media(max-width:760px){
+      body{padding-bottom:calc(85px + env(safe-area-inset-bottom, 0px))}
+      .mobile-bottom-nav{display:flex;position:fixed;bottom:0;left:0;right:0;z-index:90;gap:0;background:#fff;box-shadow:0 -8px 22px rgba(20,32,58,.11);border-top:1px solid #e7eaf3;padding:6px 4px calc(7px + env(safe-area-inset-bottom, 0px))}
+      .mobile-bottom-nav button{flex:1;border:0;background:none;display:grid;justify-items:center;gap:2px;font-size:10px;font-weight:700;color:#74809a;padding:5px 1px}
+      .mobile-bottom-nav button.active{color:#5266e9}
+      .mobile-bottom-nav .nav-mark{font-size:23px;font-weight:500;line-height:25px}
+      .main-grid{gap:12px}
+      .calendar-day{height:80px;touch-action:manipulation}
+      input,select,textarea{font-size:16px!important}
+      .toast{bottom:calc(88px + env(safe-area-inset-bottom, 0px));white-space:normal;max-width:calc(100vw - 24px);text-align:center}
+      .modal{max-height:85dvh;overflow:auto}
+      .modal-content{padding:18px}
+      .surface-pad{padding:15px}
+      .main{padding:12px 10px}
+    }
+    @media(max-width:410px){.calendar-day{height:74px}.main{padding:11px 7px}.calendar-grid{gap:1px;padding:4px}.calendar-day .location-chip{font-size:8px}.status-grid{gap:6px}}
+  
+    #holidayPanel .practice-metric{background:#fffaf4;border-color:#f4e4d4}
+    #holidayPanel .practice-metric strong{color:var(--holiday)}
+    #holidayPanel .practice-item:hover{background:#fffaf4;border-color:#efcfac}
+    @media(max-width:760px){.mobile-bottom-nav button{min-width:0}.mobile-bottom-nav button span:last-child{font-size:9px;letter-spacing:-.15px}}
+  </style>
+</head>
+<body>
+  <svg style="position:absolute;width:0;height:0;overflow:hidden" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+    <symbol id="i-calendar" viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/></symbol>
+    <symbol id="i-sun" viewBox="0 0 24 24"><circle cx="12" cy="12" r="4"/><path d="M12 2v2m0 16v2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M2 12h2m16 0h2M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"/></symbol>
+    <symbol id="i-briefcase" viewBox="0 0 24 24"><rect x="3" y="7" width="18" height="14" rx="2"/><path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 13h18M10 13v2h4v-2"/></symbol>
+    <symbol id="i-chart" viewBox="0 0 24 24"><path d="M3 3v18h18M7 16v-5M12 16V7M17 16v-9"/></symbol>
+    <symbol id="i-download" viewBox="0 0 24 24"><path d="M12 3v12m-5-5 5 5 5-5M4 17v3h16v-3"/></symbol>
+    <symbol id="i-settings" viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.7 1.7 0 0 0 .34 1.87l.1.1-1.9 1.9-.1-.1A1.7 1.7 0 0 0 16 18.4l-.5.2v2.2h-3v-2.2l-.5-.2a1.7 1.7 0 0 0-1.87.34l-.1.1-1.9-1.9.1-.1A1.7 1.7 0 0 0 8.6 15l-.2-.5H6.2v-3h2.2l.2-.5a1.7 1.7 0 0 0-.34-1.87l-.1-.1 1.9-1.9.1.1A1.7 1.7 0 0 0 12 7.6l.5-.2V5.2h3v2.2l.5.2a1.7 1.7 0 0 0 1.87-.34l.1-.1 1.9 1.9-.1.1A1.7 1.7 0 0 0 19.4 11l.2.5h2.2v3h-2.2z" transform="translate(-2 -1)"/></symbol>
+    <symbol id="i-left" viewBox="0 0 24 24"><path d="m15 18-6-6 6-6"/></symbol>
+    <symbol id="i-right" viewBox="0 0 24 24"><path d="m9 18 6-6-6-6"/></symbol>
+    <symbol id="i-plus" viewBox="0 0 24 24"><path d="M12 5v14M5 12h14"/></symbol>
+    <symbol id="i-close" viewBox="0 0 24 24"><path d="M6 6l12 12M18 6 6 18"/></symbol>
+    <symbol id="i-shield" viewBox="0 0 24 24"><path d="m12 22-2-1C5 18.5 4 14.5 4 9V5l8-3 8 3v4c0 5.5-1 9.5-6 12z"/><path d="m9 12 2 2 4-4"/></symbol>
+  </svg>
+  <div class="app">
+    <aside class="sidebar">
+      <div class="brand"><div class="brand-logo"><svg width="23" height="23" viewBox="0 0 24 24" fill="none" stroke="white" stroke-width="2.1" stroke-linecap="round"><rect x="3" y="5" width="18" height="16" rx="3"/><path d="M7 3v4M17 3v4M3 10h18m-12 5 2 2 4-4"/></svg></div><div><div class="brand-title">Tagwerk.</div><div class="brand-sub">Dein persönlicher Kalender</div></div></div>
+      <div><div class="section-label">Überblick</div><div class="nav-list"><button class="nav-button active" id="navCalendar" type="button"><svg><use href="#i-calendar"/></svg>Kalender</button><button class="nav-button" id="navStats" type="button"><svg><use href="#i-chart"/></svg>Auswertung</button><button class="nav-button" id="navPractice" type="button"><svg><use href="#i-briefcase"/></svg>Praktikum</button><button class="nav-button" id="navHoliday" type="button"><svg><use href="#i-sun"/></svg>Feiertage</button><button class="nav-button" id="navBackup" type="button"><svg><use href="#i-download"/></svg>Datensicherung</button></div></div>
+      <div class="side-summary"><div class="small">Standort-Anteil · dieser Monat</div><div class="large" id="sidebarPct">0,00 %</div><div class="smallline" id="sidebarDays">Noch keine Arbeitstage erfasst</div><div class="side-track"><div class="side-fill" id="sidebarBar"></div></div></div>
+      <div class="sidebar-bottom"><div class="sidebar-info">Alles an einem Ort: Standort, Homeoffice, Praktikum, Feiertage, Termine und Notizen.</div><div class="sidebar-note">Funktioniert auch ohne Internet.</div></div>
+    </aside>
+    <main class="main">
+      <header class="topbar"><div><div class="eyebrow">Dein Arbeitsalltag, im Blick</div><h1 class="page-title">Mein Kalender</h1><div class="page-subtitle" id="welcomeText">Plane deine Tage und behalte den Überblick.</div></div><div class="top-actions"><button class="secondary" type="button" id="weekPlanBtn"><svg width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.7"><use href="#i-calendar"/></svg><span>Woche ausfüllen</span></button><button class="icon-btn" id="settingsBtn" title="Einstellungen und Daten" aria-label="Einstellungen" type="button"><svg><use href="#i-settings"/></svg></button><button class="primary" id="newEventBtn" type="button"><svg width="17" height="17" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-plus"/></svg>Neuer Termin</button></div></header>
+      <div class="main-grid">
+        <div class="left-stack">
+          <section class="surface" id="calendarPanel" aria-label="Monatskalender">
+            <div class="calendar-toolbar"><div><h2 class="month-title" id="monthTitle"></h2><div class="month-subtitle" id="monthSubtitle"></div></div><div class="month-controls"><button class="tool-btn today-btn" id="todayBtn" type="button">Heute</button><button class="icon-btn" id="prevMonth" type="button" aria-label="Vorheriger Monat"><svg><use href="#i-left"/></svg></button><button class="icon-btn" id="nextMonth" type="button" aria-label="Nächster Monat"><svg><use href="#i-right"/></svg></button></div></div>
+            <div class="weekdays" aria-hidden="true"><div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div></div>
+            <div class="calendar-grid" id="calendarGrid"></div>
+            <div class="calendar-footer"><span class="legend"><span class="legend-dot" style="background:var(--blue)"></span>Standort</span><span class="legend"><span class="legend-dot" style="background:var(--teal)"></span>Homeoffice</span><span class="legend"><span class="legend-dot" style="background:var(--violet)"></span>Praktikum</span><span class="legend"><span class="legend-dot" style="background:#edbc68"></span>Urlaub</span><span class="legend"><span class="legend-dot" style="background:#db8198"></span>Krank</span><span class="legend"><span class="legend-dot" style="background:#9da8b9"></span>Frei</span><span class="legend"><span class="legend-dot" style="background:var(--holiday)"></span>Feiertag</span></div>
+          </section>
+          <section class="surface surface-pad" id="statsPanel" aria-label="Arbeitsort-Auswertung">
+            <div class="section-heading"><div><h2 class="section-title">Standort vs. Homeoffice</h2><div class="section-desc" id="statsDesc">Nur Standort und Homeoffice zählen für die Quote</div></div><div class="segmented" role="group" aria-label="Auswertungszeitraum"><button type="button" data-period="month" class="active">Monat</button><button type="button" data-period="year">Jahr</button><button type="button" data-period="all">Gesamt</button></div></div>
+            <div class="stats-layout"><div class="donut" id="donut"><div class="donut-inner"><div class="donut-val" id="donutVal">0</div><div class="donut-sub">Arbeitstage</div></div></div><div><div class="stat-row"><div class="stat-left"><span class="legend-dot" style="background:var(--blue);width:11px;height:11px"></span><span class="stat-name">Standort</span></div><div class="stat-right"><span class="stat-count" id="officeCount">0</span><span class="stat-percent" id="officePercent">0,00 %</span></div></div><div class="stat-meter"><span id="officeMeter" style="background:var(--blue)"></span></div><div class="stat-row"><div class="stat-left"><span class="legend-dot" style="background:var(--teal);width:11px;height:11px"></span><span class="stat-name">Homeoffice</span></div><div class="stat-right"><span class="stat-count" id="homeCount">0</span><span class="stat-percent" id="homePercent">0,00 %</span></div></div><div class="stat-meter"><span id="homeMeter" style="background:var(--teal)"></span></div><div class="mini-text" id="targetNotice">Zielwert Standort: 60 %</div></div></div>
+            <div class="extra-stats" id="extraStats"></div>
+          </section>
+          <section class="surface surface-pad" id="practicePanel" aria-label="Praktikum-Übersicht">
+            <div class="section-heading"><div><h2 class="section-title">Praktikum</h2><div class="section-desc">Separate Erfassung deiner Praktikumstage</div></div><span class="legend" style="color:var(--violet)"><span class="legend-dot" style="background:var(--violet)"></span>Nicht quotenrelevant</span></div>
+            <p class="practice-intro">Praktikumstage werden eigenständig gezählt. Sie verändern weder die Anzahl der Standort- und Homeoffice-Tage noch deren Prozentanteile. Klicke auf einen Tag in der Liste, um seinen Eintrag zu bearbeiten.</p>
+            <div class="practice-metrics">
+              <div class="practice-metric"><strong id="practiceMonth">0</strong><span>Dieser Monat</span></div>
+              <div class="practice-metric"><strong id="practiceYear">0</strong><span>Dieses Jahr</span></div>
+              <div class="practice-metric"><strong id="practiceAll">0</strong><span>Gesamt bisher</span></div>
+              <div class="practice-metric"><strong id="practicePlanned">0</strong><span>Zukünftig geplant</span></div>
+            </div>
+            <div class="practice-heading">Eingetragene Praktikumstage</div>
+            <div id="practiceList" class="practice-list"></div>
+          </section>
+          <section class="surface surface-pad" id="holidayPanel" aria-label="Feiertage-Übersicht">
+            <div class="section-heading"><div><h2 class="section-title">Feiertage</h2><div class="section-desc">Deine separat erfassten Feiertage</div></div><span class="legend" style="color:var(--holiday)"><span class="legend-dot" style="background:var(--holiday)"></span>Wie freie Tage</span></div>
+            <p class="practice-intro">Feiertage zählen wie freie Tage und gehen nicht in die Standort-/Homeoffice-Quote ein. Markiere sie direkt im Kalender. Du kannst in der Tagesnotiz z. B. den Namen des Feiertags ergänzen. Feiertage werden nicht automatisch eingetragen.</p>
+            <div class="practice-metrics">
+              <div class="practice-metric"><strong id="holidayMonth">0</strong><span>Dieser Monat</span></div>
+              <div class="practice-metric"><strong id="holidayYear">0</strong><span>Dieses Jahr</span></div>
+              <div class="practice-metric"><strong id="holidayAll">0</strong><span>Gesamt bisher</span></div>
+              <div class="practice-metric"><strong id="holidayPlanned">0</strong><span>Zukünftig geplant</span></div>
+            </div>
+            <div class="practice-heading">Eingetragene Feiertage</div>
+            <div id="holidayList" class="practice-list"></div>
+          </section>
+        </div>
+        <div class="right-stack">
+          <section class="surface surface-pad" id="dayPanel" aria-label="Ausgewählter Tag"><div class="day-date-label">Ausgewählter Tag</div><h2 class="day-title" id="dayTitle"></h2><div class="day-sub" id="daySubtitle"></div><div class="side-divider"></div><h3 class="small-heading">Wo warst du an diesem Tag?</h3><div class="status-grid" id="statusGrid"><button type="button" class="status-btn office" data-status="office"><span class="status-emoji">🏢</span>Standort</button><button type="button" class="status-btn home" data-status="home"><span class="status-emoji">🏠</span>Homeoffice</button><button type="button" class="status-btn internship" data-status="internship"><span class="status-emoji">🎓</span>Praktikum</button><button type="button" class="status-btn vacation" data-status="vacation"><span class="status-emoji">🌴</span>Urlaub</button><button type="button" class="status-btn sick" data-status="sick"><span class="status-emoji">✚</span>Krank</button><button type="button" class="status-btn off" data-status="off"><span class="status-emoji">☕</span>Frei</button><button type="button" class="status-btn holiday" data-status="holiday"><span class="status-emoji">☀</span>Feiertag</button></div><div class="status-foot"><span class="hint" id="futureHint">Einfach auswählen – wird gespeichert</span><button class="tiny-link" id="clearStatus" type="button">Zurücksetzen</button></div><div class="side-divider"></div><h3 class="small-heading">Tagesnotiz</h3><textarea id="dayNote" class="note-area" placeholder="Was möchtest du für diesen Tag festhalten?" aria-label="Tagesnotiz"></textarea><div class="note-status" id="noteSaved">Gespeichert ✓</div><div class="side-divider"></div><div class="section-heading"><h3 class="small-heading" style="margin:0">Termine</h3><span class="hint" id="dayEventCount">0 Einträge</span></div><div class="day-events" id="dayEvents"></div><button class="secondary new-event" type="button" id="addDayEvent"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2"><use href="#i-plus"/></svg>Termin hinzufügen</button></section>
+          <section class="surface surface-pad"><div class="section-heading"><h2 class="section-title" style="font-size:15px">Anstehende Termine</h2><span class="hint">Nächste 5</span></div><div id="upcomingList" class="upcoming-list"></div></section>
+          <div class="privacy-note"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><use href="#i-shield"/></svg><span>Deine Einträge werden auf diesem iPhone gespeichert, nicht automatisch mit Windows synchronisiert. Erstelle regelmäßig eine JSON-Sicherung.</span></div>
+        </div>
+      </div>
+    </main>
+  </div>
+  <dialog class="modal" id="eventDialog" aria-labelledby="eventModalTitle"><form class="modal-content" id="eventForm"><div class="modal-header"><div><h2 class="modal-title" id="eventModalTitle">Neuer Termin</h2><p class="modal-explain">Trage Termine, Erinnerungen und andere Ereignisse ein.</p></div><button class="icon-btn" type="button" data-close="eventDialog" aria-label="Schließen"><svg><use href="#i-close"/></svg></button></div><div class="form-grid"><div class="field wide"><label for="eventTitle">Bezeichnung *</label><input type="text" id="eventTitle" required maxlength="160" placeholder="z. B. Teammeeting oder Arzttermin"></div><div class="field"><label for="eventDate">Datum *</label><input type="date" id="eventDate" required></div><div class="field"><label for="eventTime">Uhrzeit (optional)</label><input type="time" id="eventTime"></div><div class="field wide"><label for="eventCategory">Kategorie</label><select id="eventCategory"><option value="work">Beruflich</option><option value="personal">Privat</option><option value="other">Sonstiges</option></select></div><div class="field wide"><label for="eventDescription">Beschreibung (optional)</label><textarea id="eventDescription" maxlength="2500" placeholder="Details zum Termin ..."></textarea></div></div><div class="modal-actions"><button type="button" class="secondary danger" id="deleteEventBtn" style="margin-right:auto;display:none">Löschen</button><button type="button" class="secondary" data-close="eventDialog">Abbrechen</button><button class="primary" type="submit">Speichern</button></div></form></dialog>
+  <dialog class="modal" id="weekDialog" aria-labelledby="weekModalTitle"><div class="modal-content"><div class="modal-header"><div><h2 class="modal-title" id="weekModalTitle">Arbeitswoche ausfüllen</h2><p class="modal-explain" id="weekRange">Wähle einen Arbeitsort für jeden Wochentag.</p></div><button class="icon-btn" type="button" data-close="weekDialog" aria-label="Schließen"><svg><use href="#i-close"/></svg></button></div><div id="weekFields" class="week-plan"></div><label class="check-row"><input type="checkbox" id="preserveWeek" checked>Bereits eingetragene Tagesstatus nicht überschreiben</label><p class="settings-desc">Voreinstellung: drei Tage am Standort und zwei Tage im Homeoffice. Du kannst jeden Wochentag individuell anpassen.</p><div class="modal-actions"><button class="secondary" type="button" data-close="weekDialog">Abbrechen</button><button class="primary" id="applyWeek" type="button">Woche übernehmen</button></div></div></dialog>
+  <dialog class="modal" id="settingsDialog" aria-labelledby="settingsModalTitle"><div class="modal-content"><div class="modal-header"><div><h2 class="modal-title" id="settingsModalTitle">Einstellungen & Daten</h2><p class="modal-explain">Persönliche Zielquote und Sicherung deiner Kalenderdaten.</p></div><button class="icon-btn" type="button" data-close="settingsDialog" aria-label="Schließen"><svg><use href="#i-close"/></svg></button></div><div class="settings-heading">Gewünschter Standort-Anteil</div><div class="target-wrap"><input type="number" id="targetInput" min="0" max="100" step="1" aria-label="Standort-Zielquote in Prozent"><span>% Standort<br><span class="settings-desc">Der Rest ist Homeoffice.</span></span></div><p class="settings-desc">Dein Zielwert wird mit der erfassten Quote verglichen. Standard: 60 % Standort / 40 % Homeoffice. Praktikum, Urlaub, Krankheit, freie Tage und Feiertage sind aus der Quote ausgeschlossen. Feiertage werden wie freie Tage behandelt.</p><div class="settings-heading">Datensicherung</div><p class="settings-desc">Die Einträge werden lokal auf diesem iPhone gespeichert. Es gibt keine automatische Synchronisierung mit Windows. Erstelle regelmäßig ein JSON-Backup und sichere es in der Dateien-App oder iCloud Drive. Nach dem Löschen der Web-App oder von Website-Daten können die Einträge verloren gehen.</p><div class="settings-export"><button class="secondary" type="button" id="exportJson">Backup (.json)</button><button class="secondary" type="button" id="exportCsv">Excel-Liste (.csv)</button><button class="secondary" type="button" id="importButton">Backup einlesen</button><button class="secondary" type="button" id="printButton">Kalender drucken</button></div><input type="file" id="importInput" accept="application/json,.json" hidden><div class="modal-actions"><button type="button" class="primary" id="saveSettings">Fertig</button></div></div></dialog>
+  <nav class="mobile-bottom-nav" aria-label="Bereiche">
+    <button id="mobileNavCalendar" type="button" class="active"><span class="nav-mark">▦</span><span>Kalender</span></button>
+    <button id="mobileNavStats" type="button"><span class="nav-mark">◔</span><span>Auswertung</span></button>
+    <button id="mobileNavPractice" type="button"><span class="nav-mark">▤</span><span>Praktikum</span></button>
+    <button id="mobileNavHoliday" type="button"><span class="nav-mark">☀</span><span>Feiertage</span></button>
+    <button id="mobileNavBackup" type="button"><span class="nav-mark">⬇</span><span>Backup</span></button>
+  </nav>
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script>
+  (() => {
+    'use strict';
+    const STATUSES={office:{label:'Standort',short:'Standort'},home:{label:'Homeoffice',short:'Homeoffice'},internship:{label:'Praktikum',short:'Praktikum'},vacation:{label:'Urlaub',short:'Urlaub'},sick:{label:'Krank',short:'Krank'},off:{label:'Frei',short:'Frei'},holiday:{label:'Feiertag',short:'Feiertag'}};
+    const CATEGORIES={work:'Beruflich',personal:'Privat',other:'Sonstiges'};
+    const $=id=>document.getElementById(id);
+    const dateKey=d=>[d.getFullYear(),String(d.getMonth()+1).padStart(2,'0'),String(d.getDate()).padStart(2,'0')].join('-');
+    const parseDate=s=>{const [y,m,d]=s.split('-').map(Number);return new Date(y,m-1,d,12)};
+    const shiftDays=(d,n)=>{const out=new Date(d.getFullYear(),d.getMonth(),d.getDate(),12);out.setDate(out.getDate()+n);return out};
+    const todayKey=()=>dateKey(new Date());
+    const validDate=s=>typeof s==='string'&&/^\d{4}-\d{2}-\d{2}$/.test(s)&&dateKey(parseDate(s))===s;
+    const escapeHTML=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+    const pct=(a,b)=>b?100*a/b:0;
+    const fmtPct=n=>n.toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})+' %';
+    const compactPct=n=>fmtPct(n);
+    let data={days:{},events:[],settings:{target:60}};
+    let selected=todayKey();let month=new Date(new Date().getFullYear(),new Date().getMonth(),1,12);let period='month';let editingId=null;let toastTimeout;
+    function sanitize(input){
+      const safe={days:{},events:[],settings:{target:60}};
+      if(!input||typeof input!=='object')throw new Error('Ungültiges Datenformat');
+      if(input.days&&typeof input.days==='object'&&!Array.isArray(input.days)){
+        for(const [day,value] of Object.entries(input.days)){
+          if(!validDate(day)||!value||typeof value!=='object')continue;
+          const workplace=Object.hasOwn(STATUSES,value.workplace)?value.workplace:null;
+          const note=typeof value.note==='string'?value.note.slice(0,20000):'';
+          if(workplace||note)safe.days[day]={workplace,note};
+        }
+      }
+      if(Array.isArray(input.events)){
+        const seen=new Set();
+        for(const ev of input.events.slice(0,10000)){
+          if(!ev||!validDate(ev.date)||typeof ev.title!=='string'||!ev.title.trim())continue;
+          const id=typeof ev.id==='string'&&ev.id&&!seen.has(ev.id)?ev.id:'import-'+Math.random().toString(36).slice(2)+Date.now();seen.add(id);
+          safe.events.push({id,date:ev.date,title:ev.title.trim().slice(0,160),time:/^([01]\d|2[0-3]):[0-5]\d$/.test(ev.time||'')?ev.time:'',category:Object.hasOwn(CATEGORIES,ev.category)?ev.category:'other',description:typeof ev.description==='string'?ev.description.slice(0,2500):''});
+        }
+      }
+      const target=Number(input.settings?.target);if(Number.isFinite(target))safe.settings.target=Math.max(0,Math.min(100,Math.round(target)));
+      return safe;
+    }
+    // Die Web-App hat ihren eigenen lokalen Datenbestand (keine Cloud-Synchronisierung).
+    const STORAGE_KEY='tagwerk-ios-data-v1';
+    function persist(){
+      try{
+        localStorage.setItem(STORAGE_KEY,JSON.stringify(data));
+        return true;
+      }catch(error){
+        console.error('Tagwerk: Lokales Speichern fehlgeschlagen',error);
+        showToast('Speichern fehlgeschlagen! Bitte Speicherplatz und Safari-Einstellungen prüfen.');
+        return false;
+      }
+    }
+    function initialize(){
+      try{
+        const saved=localStorage.getItem(STORAGE_KEY);
+        if(saved)data=sanitize(JSON.parse(saved));
+        render();
+      }catch(error){
+        console.error('Tagwerk: Lokale Daten konnten nicht geladen werden',error);
+        alert('Gespeicherte Daten konnten nicht geladen werden. Bitte sichere den Datenbestand, bevor du weitere Einträge machst. Fehlermeldung: '+error.message);
+      }
+    }
+    function showToast(message){const el=$('toast');el.textContent=message;el.classList.add('show');clearTimeout(toastTimeout);toastTimeout=setTimeout(()=>el.classList.remove('show'),3000)}
+    function currentDay(){return data.days[selected]||{workplace:null,note:''}}
+    function setWorkplace(value){const item=currentDay();item.workplace=item.workplace===value?null:value;if(!item.workplace&&!item.note.trim())delete data.days[selected];else data.days[selected]=item;persist();render();showToast(value&&item.workplace?'Arbeitsort gespeichert':'Tagesstatus zurückgesetzt')}
+    function renderCalendar(){
+      const m=month.getMonth(),y=month.getFullYear();$('monthTitle').textContent=new Intl.DateTimeFormat('de-DE',{month:'long',year:'numeric'}).format(month);$('monthTitle').textContent=$('monthTitle').textContent.replace(/^./,c=>c.toUpperCase());
+      const thisMonthEvents=data.events.filter(e=>parseDate(e.date).getMonth()===m&&parseDate(e.date).getFullYear()===y).length;
+      $('monthSubtitle').textContent=thisMonthEvents+' '+(thisMonthEvents===1?'Termin':'Termine')+' eingetragen · Klicke auf einen Tag für Details';
+      const start=new Date(y,m,1,12);const offset=(start.getDay()+6)%7;const first=shiftDays(start,-offset);
+      const numberOfDays=new Date(y,m+1,0).getDate();const cells=Math.ceil((offset+numberOfDays)/7)*7;const grid=$('calendarGrid');grid.replaceChildren();
+      const byDate=new Map();for(const e of data.events){if(!byDate.has(e.date))byDate.set(e.date,[]);byDate.get(e.date).push(e)}
+      for(let i=0;i<cells;i++){
+        const d=shiftDays(first,i),key=dateKey(d),outside=d.getMonth()!==m,weekend=d.getDay()===0||d.getDay()===6;
+        const day=data.days[key],events=(byDate.get(key)||[]).slice().sort(sortEvents);
+        const btn=document.createElement('button');btn.type='button';btn.className='calendar-day'+(outside?' outside':'')+(weekend?' weekend':'')+(key===selected?' selected':'')+(key===todayKey()?' today':'');btn.dataset.date=key;
+        btn.setAttribute('aria-label',new Intl.DateTimeFormat('de-DE',{dateStyle:'full'}).format(d)+(day?.workplace?', '+STATUSES[day.workplace].label:'')+(events.length?', '+events.length+' Termine':''));btn.setAttribute('aria-pressed',String(key===selected));
+        let content='<div class="day-head"><span class="day-number">'+d.getDate()+'</span>'+(events.length?'<span class="day-event-number">'+events.length+'</span>':'')+'</div>';
+        if(day?.workplace)content+='<span class="location-chip '+day.workplace+'">'+STATUSES[day.workplace].short+(key>todayKey()?' · Plan':'')+'</span>';
+        if(day?.note&&!day.workplace)content+='<span class="tiny-more">● Notiz</span>';
+        for(const ev of events.slice(0,2))content+='<span class="event-pill '+ev.category+'" title="'+escapeHTML(ev.title)+'">'+(ev.time?escapeHTML(ev.time)+' ':'')+escapeHTML(ev.title)+'</span>';
+        if(events.length>2)content+='<span class="tiny-more">+'+(events.length-2)+' weitere</span>';
+        btn.innerHTML=content;btn.addEventListener('click',()=>selectDay(key));grid.appendChild(btn);
+      }
+    }
+    function selectDay(key){if(!validDate(key))return;selected=key;const d=parseDate(key);if(d.getMonth()!==month.getMonth()||d.getFullYear()!==month.getFullYear())month=new Date(d.getFullYear(),d.getMonth(),1,12);render()}
+    function sortEvents(a,b){return(a.time||'99:99').localeCompare(b.time||'99:99')||a.title.localeCompare(b.title,'de')}
+    function renderDay(){
+      const date=parseDate(selected),item=currentDay();
+      $('dayTitle').textContent=new Intl.DateTimeFormat('de-DE',{day:'numeric',month:'long'}).format(date);$('daySubtitle').textContent=new Intl.DateTimeFormat('de-DE',{weekday:'long',year:'numeric'}).format(date);
+      document.querySelectorAll('[data-status]').forEach(btn=>{const active=btn.dataset.status===item.workplace;btn.classList.toggle('active',active);btn.setAttribute('aria-pressed',String(active))});
+      $('futureHint').textContent=selected>todayKey()?'Geplante Tage zählen erst ab diesem Datum':'Einfach auswählen – wird gespeichert';
+      if(document.activeElement!==$('dayNote'))$('dayNote').value=item.note||'';
+      const events=data.events.filter(e=>e.date===selected).sort(sortEvents);$('dayEventCount').textContent=events.length+' '+(events.length===1?'Eintrag':'Einträge');
+      const list=$('dayEvents');list.replaceChildren();
+      if(!events.length){list.innerHTML='<div class="empty-events">Noch keine Termine für diesen Tag.</div>'}else{
+        for(const ev of events){const el=document.createElement('div');el.className='event-card';el.innerHTML='<span class="event-dot '+ev.category+'"></span><div class="event-main"><div class="event-title">'+escapeHTML(ev.title)+'</div><div class="event-meta">'+(ev.time?escapeHTML(ev.time)+' Uhr · ':'')+CATEGORIES[ev.category]+'</div>'+(ev.description?'<div class="event-meta">'+escapeHTML(ev.description)+'</div>':'')+'</div><button type="button" class="event-edit">Ändern</button>';el.querySelector('button').addEventListener('click',()=>openEvent(ev.id));list.appendChild(el)}
+      }
+      $('noteSaved').classList.remove('visible');
+    }
+    function stats(scope){
+      const counts={office:0,home:0,vacation:0,sick:0,off:0,holiday:0},now=todayKey(),yyy=month.getFullYear(),mmm=String(month.getMonth()+1).padStart(2,'0');
+      for(const [day,entry] of Object.entries(data.days)){
+        if(day>now||!entry.workplace||!Object.hasOwn(counts,entry.workplace))continue;
+        if(scope==='month'&&!day.startsWith(yyy+'-'+mmm+'-'))continue;
+        if(scope==='year'&&!day.startsWith(yyy+'-'))continue;
+        counts[entry.workplace]++;
+      }
+      return{...counts,total:counts.office+counts.home};
+    }
+    function renderStats(){
+      const s=stats(period),p=pct(s.office,s.total),h=pct(s.home,s.total);
+      let periodName=period==='month'?new Intl.DateTimeFormat('de-DE',{month:'long',year:'numeric'}).format(month):period==='year'?String(month.getFullYear()):'alle Jahre';
+      $('statsDesc').textContent='Erfasste Tage bis heute · '+periodName;
+      $('donut').style.background=s.total?`conic-gradient(var(--blue) 0% ${p}%,var(--teal) ${p}% 100%)`:'conic-gradient(#e9edf5 0% 100%)';
+      $('donutVal').textContent=s.total;$('officeCount').textContent=s.office;$('homeCount').textContent=s.home;
+      $('officePercent').textContent=fmtPct(p);$('homePercent').textContent=fmtPct(h);
+      $('officeMeter').style.width=p+'%';$('homeMeter').style.width=h+'%';
+      const target=data.settings.target;const gap=p-target;
+      $('targetNotice').textContent=s.total?`Ziel Standort: ${fmtPct(target)} · ${Math.abs(gap).toLocaleString('de-DE',{minimumFractionDigits:2,maximumFractionDigits:2})} Prozentpunkte ${gap>=0?'darüber':'darunter'}`:`Dein Ziel: ${fmtPct(target)} Standort / ${fmtPct(100-target)} Homeoffice`;
+      const extra=$('extraStats');extra.innerHTML='<span>Urlaub <strong>'+s.vacation+'</strong></span><span>Krank <strong>'+s.sick+'</strong></span><span>Frei inkl. Feiertage <strong>'+(s.off+s.holiday)+'</strong></span><span>Feiertage <strong>'+s.holiday+'</strong></span><span>Arbeitstage <strong>'+s.total+'</strong></span>';
+      document.querySelectorAll('[data-period]').forEach(b=>{b.classList.toggle('active',b.dataset.period===period);b.setAttribute('aria-pressed',String(b.dataset.period===period))});
+      const monthly=stats('month'),mp=pct(monthly.office,monthly.total);
+      $('sidebarPct').textContent=compactPct(mp);$('sidebarDays').textContent=monthly.total?monthly.office+' von '+monthly.total+' Arbeitstagen am Standort':'Noch keine Arbeitstage erfasst';$('sidebarBar').style.width=mp+'%';
+    }
+    function renderUpcoming(){const upcoming=data.events.filter(e=>e.date>=todayKey()).sort((a,b)=>a.date.localeCompare(b.date)||sortEvents(a,b)).slice(0,5),box=$('upcomingList');box.replaceChildren();if(!upcoming.length){box.innerHTML='<p class="empty-upcoming">Keine anstehenden Termine eingetragen.</p>';return}for(const ev of upcoming){const d=parseDate(ev.date),row=document.createElement('div');row.className='upcoming-item';row.tabIndex=0;row.setAttribute('role','button');row.setAttribute('aria-label','Termin anzeigen: '+ev.title);row.innerHTML='<div class="upcoming-date"><strong>'+d.getDate()+'</strong><span>'+new Intl.DateTimeFormat('de-DE',{month:'short'}).format(d)+'</span></div><div class="upcoming-text"><strong>'+escapeHTML(ev.title)+'</strong><small>'+(ev.time?escapeHTML(ev.time)+' Uhr · ':'')+escapeHTML(CATEGORIES[ev.category])+'</small></div>';const action=()=>selectDay(ev.date);row.addEventListener('click',action);row.addEventListener('keydown',e=>{if(e.key==='Enter'||e.key===' '){e.preventDefault();action()}});box.appendChild(row)}}
+    function renderPractice(){
+      const now=todayKey(),year=month.getFullYear(),monthPrefix=year+'-'+String(month.getMonth()+1).padStart(2,'0')+'-';
+      const days=Object.keys(data.days).filter(k=>data.days[k]?.workplace==='internship').sort().reverse();
+      const occurred=days.filter(d=>d<=now);
+      $('practiceMonth').textContent=occurred.filter(d=>d.startsWith(monthPrefix)).length;
+      $('practiceYear').textContent=occurred.filter(d=>d.startsWith(year+'-')).length;
+      $('practiceAll').textContent=occurred.length;
+      $('practicePlanned').textContent=days.length-occurred.length;
+      const list=$('practiceList');list.replaceChildren();
+      if(!days.length){list.innerHTML='<div class="practice-empty">Noch keine Praktikumstage erfasst. Wähle im Kalender einen Tag und klicke auf „Praktikum“.</div>';return}
+      for(const key of days.slice(0,20)){
+        const day=data.days[key],button=document.createElement('button');button.type='button';button.className='practice-item';
+        const label=new Intl.DateTimeFormat('de-DE',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).format(parseDate(key));
+        const labelSpan=document.createElement('span');labelSpan.className='practice-item-date';labelSpan.textContent=label;
+        const metaSpan=document.createElement('span');metaSpan.className='practice-item-meta';metaSpan.textContent=(key>now?'Geplant':'Erfasst')+(day.note?' · '+day.note:'');
+        button.append(labelSpan,metaSpan);button.addEventListener('click',()=>{selectDay(key);$('dayPanel').scrollIntoView({behavior:'smooth',block:'start'})});list.appendChild(button);
+      }
+      if(days.length>20){const hint=document.createElement('p');hint.className='mini-text';hint.textContent='Es werden die 20 neuesten Einträge angezeigt. Alle Tage bleiben im Kalender und CSV-Export erhalten.';list.appendChild(hint)}
+    }
+    function renderHoliday(){
+      const now=todayKey(),year=month.getFullYear(),monthPrefix=year+'-'+String(month.getMonth()+1).padStart(2,'0')+'-';
+      const days=Object.keys(data.days).filter(k=>data.days[k]?.workplace==='holiday').sort().reverse();
+      const occurred=days.filter(d=>d<=now);
+      $('holidayMonth').textContent=occurred.filter(d=>d.startsWith(monthPrefix)).length;
+      $('holidayYear').textContent=occurred.filter(d=>d.startsWith(year+'-')).length;
+      $('holidayAll').textContent=occurred.length;
+      $('holidayPlanned').textContent=days.length-occurred.length;
+      const list=$('holidayList');list.replaceChildren();
+      if(!days.length){list.innerHTML='<div class="practice-empty">Noch keine Feiertage erfasst. Wähle im Kalender einen Tag und klicke auf „Feiertag“.</div>';return}
+      for(const key of days.slice(0,20)){
+        const day=data.days[key],button=document.createElement('button');button.type='button';button.className='practice-item';
+        const label=new Intl.DateTimeFormat('de-DE',{weekday:'short',day:'2-digit',month:'2-digit',year:'numeric'}).format(parseDate(key));
+        const labelSpan=document.createElement('span');labelSpan.className='practice-item-date';labelSpan.textContent=label;
+        const metaSpan=document.createElement('span');metaSpan.className='practice-item-meta';metaSpan.textContent=(key>now?'Geplant':'Erfasst')+(day.note?' · '+day.note:'');
+        button.append(labelSpan,metaSpan);button.addEventListener('click',()=>{selectDay(key);$('dayPanel').scrollIntoView({behavior:'smooth',block:'start'})});list.appendChild(button);
+      }
+      if(days.length>20){const hint=document.createElement('p');hint.className='mini-text';hint.textContent='Es werden die 20 neuesten Feiertage angezeigt. Alle Tage bleiben im Kalender und CSV-Export erhalten.';list.appendChild(hint)}
+    }
+    function render(){renderCalendar();renderDay();renderStats();renderPractice();renderHoliday();renderUpcoming();$('welcomeText').textContent='Heute ist '+new Intl.DateTimeFormat('de-DE',{weekday:'long',day:'numeric',month:'long',year:'numeric'}).format(new Date())+'.'}
+    function openDialog(el){if(!el.open)el.showModal()}
+    function closeDialog(el){if(el.open)el.close()}
+    function openEvent(id=null){editingId=id;const ev=data.events.find(e=>e.id===id);$('eventModalTitle').textContent=ev?'Termin bearbeiten':'Neuer Termin';$('eventTitle').value=ev?.title||'';$('eventDate').value=ev?.date||selected;$('eventTime').value=ev?.time||'';$('eventCategory').value=ev?.category||'work';$('eventDescription').value=ev?.description||'';$('deleteEventBtn').style.display=ev?'inline-flex':'none';openDialog($('eventDialog'));setTimeout(()=>$('eventTitle').focus(),40)}
+    function newId(){return(globalThis.crypto&&crypto.randomUUID)?crypto.randomUUID():'e-'+Date.now()+'-'+Math.random().toString(36).slice(2)}
+    function exportFile(filename,content,mime){const blob=new Blob([content],{type:mime}),url=URL.createObjectURL(blob),a=document.createElement('a');a.href=url;a.download=filename;document.body.append(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(url),1000)}
+    function exportBackup(){exportFile('Tagwerk-Backup-'+todayKey()+'.json',JSON.stringify({...data,format:'tagwerk-backup',version:1,exportedAt:new Date().toISOString()},null,2),'application/json;charset=utf-8');showToast('Backup heruntergeladen')}
+    function exportCSV(){const header=['Datum','Wochentag','Arbeitsort','Tagesnotiz','Termin','Uhrzeit','Kategorie','Beschreibung'];const rows=[header];const days=[...new Set([...Object.keys(data.days),...data.events.map(e=>e.date)])].sort();for(const key of days){const day=data.days[key]||{},evs=data.events.filter(e=>e.date===key).sort(sortEvents);const base=[key,new Intl.DateTimeFormat('de-DE',{weekday:'long'}).format(parseDate(key)),day.workplace?STATUSES[day.workplace].label:'',day.note||''];if(!evs.length){rows.push([...base,'','','',''])}else for(const ev of evs)rows.push([...base,ev.title,ev.time||'',CATEGORIES[ev.category],ev.description||''])}const quote=v=>'"'+String(v??'').replace(/"/g,'""')+'"';exportFile('Tagwerk-Auswertung-'+todayKey()+'.csv','\ufeff'+rows.map(row=>row.map(quote).join(';')).join('\r\n'),'text/csv;charset=utf-8');showToast('CSV-Datei heruntergeladen')}
+    function openWeek(){const day=parseDate(selected),monday=shiftDays(day,-((day.getDay()+6)%7));$('weekRange').textContent='Woche vom '+new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(monday)+' bis '+new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit',year:'numeric'}).format(shiftDays(monday,4));const container=$('weekFields');container.replaceChildren();const weekdayNames=['Montag','Dienstag','Mittwoch','Donnerstag','Freitag'];for(let i=0;i<5;i++){const key=dateKey(shiftDays(monday,i));const row=document.createElement('div');row.className='week-row';const label=document.createElement('label');label.textContent=weekdayNames[i]+' · '+new Intl.DateTimeFormat('de-DE',{day:'2-digit',month:'2-digit'}).format(shiftDays(monday,i));const select=document.createElement('select');select.dataset.key=key;const options=[['','Nicht eintragen'],['office','Standort'],['home','Homeoffice'],['internship','Praktikum'],['vacation','Urlaub'],['sick','Krank'],['off','Frei'],['holiday','Feiertag']];for(const [value,text] of options){const option=document.createElement('option');option.value=value;option.textContent=text;select.add(option)}select.value=data.days[key]?.workplace||(i===0||i===2||i===4?'office':'home');row.append(label,select);container.appendChild(row)}$('preserveWeek').checked=true;openDialog($('weekDialog'))}
+    function applyWeek(){const preserve=$('preserveWeek').checked;let added=0;for(const s of document.querySelectorAll('#weekFields select')){const key=s.dataset.key;if(preserve&&data.days[key]?.workplace)continue;const item=data.days[key]||{workplace:null,note:''};item.workplace=s.value||null;if(item.workplace||item.note)data.days[key]=item;else delete data.days[key];added++}persist();closeDialog($('weekDialog'));render();showToast(added+' Tage aktualisiert')}
+    function saveNote(){const note=$('dayNote').value;const item=currentDay();if(note===item.note)return;item.note=note;if(!note.trim()&&!item.workplace)delete data.days[selected];else data.days[selected]=item;persist();renderCalendar();$('noteSaved').classList.add('visible')}
+    function navigateMonth(delta){const wantedDay=parseDate(selected).getDate();month=new Date(month.getFullYear(),month.getMonth()+delta,1,12);const lastDay=new Date(month.getFullYear(),month.getMonth()+1,0).getDate();selected=dateKey(new Date(month.getFullYear(),month.getMonth(),Math.min(wantedDay,lastDay),12));render()}
+    $('prevMonth').addEventListener('click',()=>navigateMonth(-1));
+    $('nextMonth').addEventListener('click',()=>navigateMonth(1));
+    $('todayBtn').addEventListener('click',()=>selectDay(todayKey()));
+    document.querySelectorAll('[data-status]').forEach(b=>b.addEventListener('click',()=>setWorkplace(b.dataset.status)));
+    $('clearStatus').addEventListener('click',()=>{const item=currentDay();item.workplace=null;if(!item.note.trim())delete data.days[selected];else data.days[selected]=item;persist();render();showToast('Tagesstatus entfernt')});
+    $('dayNote').addEventListener('change',saveNote);$('dayNote').addEventListener('blur',saveNote);
+    document.querySelectorAll('[data-period]').forEach(btn=>btn.addEventListener('click',()=>{period=btn.dataset.period;renderStats()}));
+    $('newEventBtn').addEventListener('click',()=>openEvent());$('addDayEvent').addEventListener('click',()=>openEvent());
+    $('eventForm').addEventListener('submit',e=>{e.preventDefault();const title=$('eventTitle').value.trim(),day=$('eventDate').value;if(!title||!validDate(day)){showToast('Bitte Titel und gültiges Datum angeben');return}const ev={id:editingId||newId(),title:title.slice(0,160),date:day,time:$('eventTime').value,category:$('eventCategory').value,description:$('eventDescription').value.trim().slice(0,2500)};if(editingId){const idx=data.events.findIndex(x=>x.id===editingId);if(idx>=0)data.events[idx]=ev;else data.events.push(ev)}else data.events.push(ev);persist();closeDialog($('eventDialog'));selectDay(day);showToast('Termin gespeichert')});
+    $('deleteEventBtn').addEventListener('click',()=>{if(!editingId||!confirm('Möchtest du diesen Termin wirklich löschen?'))return;data.events=data.events.filter(e=>e.id!==editingId);persist();closeDialog($('eventDialog'));render();showToast('Termin gelöscht')});
+    $('weekPlanBtn').addEventListener('click',openWeek);$('applyWeek').addEventListener('click',applyWeek);
+    $('settingsBtn').addEventListener('click',()=>{ $('targetInput').value=data.settings.target;openDialog($('settingsDialog'))});
+    $('navBackup').addEventListener('click',()=>{ $('targetInput').value=data.settings.target;openDialog($('settingsDialog'))});
+    function setActiveNav(id){for(const b of document.querySelectorAll('#navCalendar,#navStats,#navPractice,#navHoliday')){const active=b.id===id;b.classList.toggle('active',active);b.setAttribute('aria-current',active?'page':'false')}}
+    $('navCalendar').addEventListener('click',()=>{setActiveNav('navCalendar');$('calendarPanel').scrollIntoView({behavior:'smooth',block:'start'})});
+    $('navStats').addEventListener('click',()=>{setActiveNav('navStats');$('statsPanel').scrollIntoView({behavior:'smooth',block:'start'})});
+    $('navPractice').addEventListener('click',()=>{setActiveNav('navPractice');$('practicePanel').scrollIntoView({behavior:'smooth',block:'start'})});
+    $('navHoliday').addEventListener('click',()=>{setActiveNav('navHoliday');$('holidayPanel').scrollIntoView({behavior:'smooth',block:'start'})});
+    $('saveSettings').addEventListener('click',()=>{const val=Number($('targetInput').value);if(!Number.isFinite(val)||val<0||val>100||$('targetInput').value.trim()===''){showToast('Zielquote zwischen 0 und 100 eingeben');return}data.settings.target=Math.round(val);persist();renderStats();closeDialog($('settingsDialog'));showToast('Einstellungen gespeichert')});
+    $('exportJson').addEventListener('click',exportBackup);$('exportCsv').addEventListener('click',exportCSV);
+    $('importButton').addEventListener('click',()=>$('importInput').click());
+    $('importInput').addEventListener('change',async e=>{const file=e.target.files?.[0];if(!file)return;try{const raw=JSON.parse(await file.text());if(!raw||typeof raw!=='object'||(!raw.days&&!raw.events)){throw new Error('Keine Kalenderdaten gefunden')}const restored=sanitize(raw);if(!confirm('Das Backup einlesen? Dabei werden alle aktuellen Kalendereinträge durch die Daten aus der Datei ersetzt.'))return;data=restored;persist();render();closeDialog($('settingsDialog'));showToast('Backup erfolgreich eingelesen')}catch(err){alert('Die Datei konnte nicht eingelesen werden: '+err.message)}finally{e.target.value=''}});
+    $('printButton').addEventListener('click',()=>window.print());
+    document.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',()=>closeDialog($(b.dataset.close))));
+    document.querySelectorAll('dialog').forEach(d=>d.addEventListener('click',e=>{if(e.target===d)d.close()}));
+
+    const mobileNavs=[['mobileNavCalendar','calendarPanel'],['mobileNavStats','statsPanel'],['mobileNavPractice','practicePanel'],['mobileNavHoliday','holidayPanel'],['mobileNavBackup','settingsDialog']];
+    for(const [id,target] of mobileNavs){
+      $(id).addEventListener('click',()=>{
+        document.querySelectorAll('.mobile-bottom-nav button').forEach(b=>b.classList.toggle('active',b.id===id));
+        if(target==='settingsDialog'){
+          $('targetInput').value=data.settings.target;
+          openDialog($('settingsDialog'));
+        }else{
+          $(target).scrollIntoView({behavior:'smooth',block:'start'});
+        }
+      });
+    }
+    if('serviceWorker' in navigator && location.protocol==='https:'){
+      navigator.serviceWorker.register('./sw.js').catch(err=>console.info('Offline-Nutzung nicht verfügbar',err));
+    }
+    initialize();
+  })();
+  </script>
+</body>
+</html>
